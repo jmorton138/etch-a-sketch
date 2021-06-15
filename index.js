@@ -5,6 +5,11 @@ function createGrid(boxes) {
     if (boxes == null) {
         boxes=16;
     }
+    const gridBar = document.querySelector('#myRange');
+    gridBar.value = boxes;
+    const gridValue = document.getElementById('slider-value');
+    gridValue.innerHTML = `Grid size: ${boxes} x ${boxes}`;
+    
     const boxHeight = 400/boxes;
     container.style['grid-template-columns'] =`repeat(${boxes}, ${boxHeight}px)`;
     container.style['grid-auto-rows'] = `${boxHeight}`;
@@ -51,12 +56,12 @@ function clearGrid() {
 
 }
 
-function changeGridSize() {
+function changeGridSize(value) {
+ 
     const gridBar = document.querySelector('#myRange');
     const gridValue = document.getElementById('slider-value');
-    console.log(gridBar.value);
-    gridValue.innerHTML = `Grid size: ${gridBar.value} x ${gridBar.value}`;
-    createGrid(gridBar.value);
+    gridValue.innerHTML = `Grid size: ${value} x ${value}`;
+    createGrid(value);
 
 }
 
